@@ -18,7 +18,6 @@ The challenge was solved using hexagonal architecture to encapsulate all the bus
     - Using Pinia as state management.
     - TailwindCSS and custom components for styling.
     - Unit tests with Vitest.
-    - E2E tests with Cypress.
 
 
 ## 🚀 How to run the App
@@ -41,6 +40,17 @@ npm run dev
 ```
 
 
+## 🧪 How to run the Tests
+- Run tests  
+```console
+npm run test
+```
+### Vue project (move to ui folder)
+- Run unit tests
+```console
+npm run test:unit
+```
+
 
 ## 💪 Possible improvements
 - Implement a new route ```/vacancies``` consuming the GET ```/recruitment/v1/vacancies``` endpoint to list all the vacancies (not implementes since is not part of the challenge).
@@ -48,8 +58,9 @@ npm run dev
 - Implement Candidatos Tab.
 - Improve errors handling and ui validations.
 - Add a Custom Button component.
-- Translations with i18n.
-- Add more tests.
+- Add translations using i18n library (https://vue-i18n.intlify.dev).
+- Add more unit tests.
+- Add integration tests with Cypress.
 
 
 ## Author
