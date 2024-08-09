@@ -23,8 +23,7 @@
                     <button
                         :disabled="isAddingCandidate"
                         class="flex items-center gap-1 rounded-xl px-4 py-2 text-white bg-primary hover:bg-violet-600 disabled:bg-violet-200"
-                        type="submit"
-                        @click="">
+                        type="submit">
                         <v-icon v-if="isAddingCandidate" name="ri-loader-4-line" animation="spin" />
                         Confirmar
                     </button>

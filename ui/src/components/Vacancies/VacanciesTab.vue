@@ -12,7 +12,11 @@
             <div v-else class="overflow-x-auto flex gap-4 pb-2">
                 <Column :title="status.name" :color="getVacancyStatusData(status.name).color"
                     :icon="getVacancyStatusData(status.name).icon" v-for="status in vacancyStatus" :key="status.id">
-                    <Candidate v-for="candidate in candidates[status.id]" :candidate="candidate" />
+                    <Candidate
+                        v-for="candidate in candidates[status.id]"
+                        :key="candidate.id"
+                        :candidate="candidate"
+                    />
                 </Column>
             </div>
         </div>
@@ -41,7 +45,7 @@ const vacancyId = route.params.id as string;
 const props = defineProps({
     candidates: {
         type: Object as PropType<CandidatesByStatus>,
-        default: {}
+        default: () => {}
     },
     vacancyStatus: {
         type: Array<VacancyStatus>,

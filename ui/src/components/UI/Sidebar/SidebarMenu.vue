@@ -2,9 +2,8 @@
     <ul class="p-4" :class="{ 'bg-slate-50 rounded-md': isExpanded }" :aria-label="itemMenu.name">
         <!-- <li v-for="(item, i) in itemMenu.children" :key="`${i}_${item.name}`"> -->
         <template v-if="itemMenu.children.length > 0">
-            <li class="flex justify-between gap-2 items-center">
-                <span @click="isExpanded = !isExpanded"
-                      class="cursor-pointer text-lg flex items-center"
+            <li @click="isExpanded = !isExpanded" class="flex justify-between gap-2 items-center">
+                <span class="cursor-pointer text-lg flex items-center"
                       :class="{ 'text-primary': itemMenu.children.find(item => item.link === activeRoute), 'uppercase text-slate-600 text-base': depth === 0 }">
                     <v-icon class="mr-2" v-if="itemMenu.icon" :name="itemMenu.icon" />
                     {{ itemMenu.name }}

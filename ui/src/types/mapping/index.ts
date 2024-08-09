@@ -2,7 +2,7 @@ import type { VacancyData } from '@monorepo/core/dist/domain/types'
 import type { CandidateItem } from '@/types'
 
 const mapCandidateItem = (item: VacancyData): CandidateItem => {
-    const { id, firstName, lastName, email, statusId, updatedAt, creatorEmployee } = item;
+    const { id, firstName, lastName, email, statusId, updatedAt } = item;
     return {
         id,
         firstName,
