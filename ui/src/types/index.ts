@@ -7,7 +7,12 @@ export type SidebarItem = {
 
 export type CandidateItem = {
     id: string,
+    statusId: string,
     firstName: string,
     lastName: string,
-    email?: string
+    updatedAt: Date,
+    creatorEmployee?: string
+    email?: string,
 }
+
+export type CandidatesByStatus = {[key: string]: Array<CandidateItem>}

@@ -6,7 +6,7 @@
                 <slot name="sidebar"></slot>
             </div>
         </aside>
-        <main class="flex-grow p-5 border-r border-gray-200">
+        <main class="flex-grow p-5 border-r border-gray-200 w-full">
             <slot name="main"></slot>
         </main>
     </div>

@@ -10,8 +10,8 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/vacancies',
-      name: 'vacancies',
+      path: '/vacancies/:id',
+      name: 'VacancyDetail',
       component: () => import('../views/VacanciesView.vue'),
       meta: { title: 'Reclutamiento' },
     }

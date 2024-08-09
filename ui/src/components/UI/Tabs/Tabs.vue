@@ -7,7 +7,7 @@
                 {{ tab.title }}
             </li>
         </ul>
-        <div class="py-6">
+        <div class="w-full py-6">
             <slot></slot>
         </div>
     </div>
