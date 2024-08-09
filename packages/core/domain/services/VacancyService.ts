@@ -21,8 +21,7 @@ export class VacancyService implements IVacancyService {
     }
 
     async addCandidate(data: CandidatePost) {
-        const response = await this.vacancyAPI.addCandidateToVacancy(data);
-        return response;
+        return this.vacancyAPI.addCandidateToVacancy(data);
     }
 
     async updateCandidateStatus(data: CandidateUpdateStatus) {

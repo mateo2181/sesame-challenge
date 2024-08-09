@@ -1,6 +1,6 @@
-import { IVacancyAPI } from "~/domain/ports/IVacancyAPI";
-import { CandidatePost, CandidateUpdateStatus } from "~/domain/types/candidates";
-import { VacancyResponse, VacancyStatusResponse } from "~/domain/types/vacancies";
+import { IVacancyAPI } from "../../domain/ports/IVacancyAPI";
+import { CandidatePost, CandidateUpdateStatus } from "../../domain/types/candidates";
+import { AddCandidateResponse, VacancyResponse, VacancyStatusResponse } from "../../domain/types";
 import clientAPI from "./clientApi";
 
 export const VacancyAPI: IVacancyAPI = ({
@@ -13,12 +13,11 @@ export const VacancyAPI: IVacancyAPI = ({
         return res.data;
     },
     addCandidateToVacancy: async (data: CandidatePost) => {
-        const res = await clientAPI.post<VacancyResponse>(`/recruitment/v1/candidates`, data);
-        return res.data;
+        return (await clientAPI.post<AddCandidateResponse>(`/recruitment/v1/candidates`, data)).data;
     },
     updateCandidateStatusVacancy: async (data: CandidateUpdateStatus) => {
         const { candidateId, ...body } = data;
-        const res = await clientAPI.put<VacancyResponse>(`/recruitment/v1/candidates/${candidateId}`, body);
+        const res = await clientAPI.put<AddCandidateResponse>(`/recruitment/v1/candidates/${candidateId}`, body);
         return res.data;
     }
 });

@@ -5,7 +5,7 @@ type VacancyBasicRelation = {
     createdAt: Date
 }
  
-type VacancyStatus = {
+export type VacancyStatus = {
     id: string,
     name: string,
     companyId: string,
@@ -62,7 +62,8 @@ export type VacancyData = {
     checklist: any,
     createdAt: Date,
     updatedAt: Date,
-    employeeId: string
+    employeeId: string,
+    creatorEmployee: string
 }
 
 export type Metadata = {
@@ -73,6 +74,11 @@ export type Metadata = {
 }
 
 export type VacancyResponse = {
+    data: VacancyData[],
+    meta: Metadata
+}
+
+export type AddCandidateResponse = {
     data: VacancyData,
     meta: Metadata
 }

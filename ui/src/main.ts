@@ -8,8 +8,8 @@ import router from './router'
 
 // Icons
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline } from "oh-vue-icons/icons";
-addIcons(IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline);
+import { IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline, RiLoader4Line } from "oh-vue-icons/icons";
+addIcons(IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline, RiLoader4Line);
 
 
 const app = createApp(App)
