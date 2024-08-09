@@ -1,9 +1,9 @@
 <template>
-    <div class="h-full flex flex-col gap-8 w-full">
+    <div class="p-5 border-r h-full flex flex-col gap-8 w-full overflow-x-hidden">
         <Header title="Reclutamiento" :username="user.username" :profilePicture="user.profile" />
-        <Tabs class="h-full w-full">
+        <Tabs>
             <Tab title="Vacantes">
-                <VacanciesTab :candidates="candidatesByStatus" :vacancyStatus="vacancyStatus" />
+                <VacanciesTab :candidates="candidatesByStatus" :isLoadingStatuses="isLoadingStatuses" :vacancyStatus="vacancyStatus" />
             </Tab>
             <Tab title="Candidatos">Candidatos Tab.</Tab>
         </Tabs>
@@ -31,7 +31,7 @@ const user = {
 }
 
 const store = useVacanciesStore();
-const { candidatesByStatus, vacancyStatus } = storeToRefs(store);
+const { candidatesByStatus, isLoadingStatuses, vacancyStatus } = storeToRefs(store);
 
 store.getCandidates(vacancyId);
 store.getStatusVacancy(vacancyId);

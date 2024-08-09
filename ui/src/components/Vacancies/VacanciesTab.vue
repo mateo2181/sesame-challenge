@@ -3,10 +3,13 @@
         <div class="flex flex-col md:flex-row gap-4 md:items-center justify-start md:justify-between">
             <InputSearch class="md:max-w-72" placeholder="Buscar" @search="searchCandidate" />
             <button class="bg-slate-800 hover:bg-slate-600 rounded-xl text-white text-sm px-4 py-2"
-                @click="isAddingCandidate = true"> Añadir candidato </button>
+                @click="isAddingCandidateModal = true"> Añadir candidato </button>
         </div>
-        <div class="overflow-x-hidden w-full">
-            <div class="overflow-x-scroll flex flex-nowrap gap-4 pb-2 w-full">
+        <div class="w-full">
+            <div class="flex justify-center mt-6" v-if="isLoadingStatuses">
+                <v-icon name="ri-loader-4-line" :scale="3" animation="spin" />
+            </div>
+            <div v-else class="overflow-x-auto flex gap-4 pb-2">
                 <Column :title="status.name" :color="getVacancyStatusData(status.name).color"
                     :icon="getVacancyStatusData(status.name).icon" v-for="status in vacancyStatus" :key="status.id">
                     <Candidate v-for="candidate in candidates[status.id]" :candidate="candidate" />
@@ -14,10 +17,10 @@
             </div>
         </div>
         <ModalAddCandidate
-            v-if="isAddingCandidate"
+            v-if="isAddingCandidateModal"
             :vacancyId="vacancyId"
             :statusId="initialVacancyStatus?.id"
-            @closeModal="isAddingCandidate = false"
+            @closeModal="isAddingCandidateModal = false"
         />
     </div>
 </template>
@@ -44,11 +47,15 @@ const props = defineProps({
         type: Array<VacancyStatus>,
         default: []
     },
+    isLoadingStatuses: {
+        type: Boolean,
+        default: false
+    },
 });
 
 const initialVacancyStatus = computed(() => props.vacancyStatus.find(status => status.order === 1))
 
-const isAddingCandidate = ref(false);
+const isAddingCandidateModal = ref(false);
 
 function searchCandidate(value: string) {
     console.log(value);

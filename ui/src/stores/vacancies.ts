@@ -13,6 +13,7 @@ export const useVacanciesStore = defineStore('vacancies', () => {
 
   const candidates = ref<CandidateItem[]>([]);
   const vacancyStatus = ref<VacancyStatus[]>([]);
+  const isLoadingStatuses = ref<boolean>(false);
   const error = ref<string>('');
   const isAddingCandidate = ref<boolean>(false);
   const errorAddingCandidate = ref<string>('');
@@ -31,11 +32,14 @@ export const useVacanciesStore = defineStore('vacancies', () => {
 
   async function getStatusVacancy(vacancyId: string) {
     error.value = '';
+    isLoadingStatuses.value = true
     try {
       const res = await vacancyService.getVacancyStatus(vacancyId);
       vacancyStatus.value = res.data;
     } catch (err) {
       error.value = 'Error fetching data';
+    } finally {
+      isLoadingStatuses.value = false;
     }
   }
 
@@ -52,5 +56,5 @@ export const useVacanciesStore = defineStore('vacancies', () => {
     }
   }
 
-  return { candidates, vacancyStatus, candidatesByStatus, isAddingCandidate, errorAddingCandidate, getCandidates, getStatusVacancy, addCandidate }
+  return { candidates, vacancyStatus, isLoadingStatuses, candidatesByStatus, isAddingCandidate, errorAddingCandidate, getCandidates, getStatusVacancy, addCandidate }
 })
