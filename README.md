@@ -56,6 +56,7 @@ npm run test:unit
 - Implement a new route ```/vacancies``` consuming the GET ```/recruitment/v1/vacancies``` endpoint to list all the vacancies (not implementes since is not part of the challenge).
 - Implement SearchCandidate inside Vacantes Tab.
 - Implement Candidatos Tab.
+- Implement Update Candidate View to allow edition of firstname, lastname, email, etc.
 - Improve errors handling and ui validations.
 - Add a Custom Button component.
 - Add translations using i18n library (https://vue-i18n.intlify.dev).

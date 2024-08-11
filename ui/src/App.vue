@@ -11,10 +11,10 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { RouterView, useRoute } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router';
 import Layout from '@/components/UI/Layout.vue';
 import Sidebar from '@/components/UI/Sidebar/Sidebar.vue';
-import { SIDEBAR_MENU_ITEMS } from '@/constants'
+import { SIDEBAR_MENU_ITEMS } from '@/constants';
 
 const route = useRoute()
 const activeRoute = ref(route.path)

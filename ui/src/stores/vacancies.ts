@@ -8,9 +8,6 @@ import { groupBy } from '@/utils';
 
 export const useVacanciesStore = defineStore('vacancies', () => {
 
-  const token = import.meta.env.VITE_TOKEN || '';
-  localStorage.setItem('token', token);
-
   const candidates = ref<CandidateItem[]>([]);
   const vacancyStatus = ref<VacancyStatus[]>([]);
   const isLoadingStatuses = ref<boolean>(false);

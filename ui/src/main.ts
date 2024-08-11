@@ -11,6 +11,8 @@ import { OhVueIcon, addIcons } from "oh-vue-icons";
 import { IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline, RiLoader4Line } from "oh-vue-icons/icons";
 addIcons(IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline, RiLoader4Line);
 
+const token = import.meta.env.VITE_TOKEN || '';
+localStorage.setItem('token', token);
 
 const app = createApp(App)
 
