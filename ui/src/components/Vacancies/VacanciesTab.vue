@@ -26,12 +26,16 @@
                 </Column>
             </div>
         </div>
-        <ModalAddCandidate v-if="isAddingCandidateModal" :vacancyId="vacancyId" :statusId="initialVacancyStatus?.id"
-            @closeModal="isAddingCandidateModal = false" />
+        <ModalAddCandidate
+            v-if="isAddingCandidateModal"
+            :vacancyId="vacancyId"
+            :vacancyStatus="vacancyStatus"
+            @closeModal="isAddingCandidateModal = false"
+        />
     </div>
 </template>
 <script setup lang="ts">
-import { computed, ref, type PropType } from 'vue';
+import { ref, type PropType } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useVacanciesStore } from '@/stores/vacancies';
@@ -46,7 +50,7 @@ import { getVacancyStatusData } from '@/constants';
 const route = useRoute();
 const vacancyId = route.params.id as string;
 
-const props = defineProps({
+defineProps({
     candidates: {
         type: Object as PropType<CandidatesByStatus>,
         default: () => { }
@@ -66,8 +70,6 @@ const emit = defineEmits(["updateCandidateStatus"]);
 const store = useVacanciesStore();
 const { updatingStatusCandidateId } = storeToRefs(store);
 
-
-const initialVacancyStatus = computed(() => props.vacancyStatus.find(status => status.order === 1))
 const isAddingCandidateModal = ref(false);
 
 function searchCandidate(value: string) {

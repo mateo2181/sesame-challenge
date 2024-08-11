@@ -43,10 +43,16 @@ export const useVacanciesStore = defineStore('vacancies', () => {
   }
 
   async function addCandidate(form: CandidatePost) {
+    const { firstName, lastName, statusId, vacancyId, email, phone } = form;
+    const formMapped: CandidatePost = { firstName, lastName, statusId, vacancyId };
+
+    if(email) formMapped['email'] = email;
+    if(phone) formMapped['phone'] = phone;
+
     errorAddingCandidate.value = '';
     isAddingCandidate.value = true;
     try {
-      const res = await vacancyService.addCandidate(form);
+      const res = await vacancyService.addCandidate(formMapped);
       candidates.value.push(mapCandidateItem(res.data));
     } catch (err) {
       errorAddingCandidate.value = 'Error adding candidate';
