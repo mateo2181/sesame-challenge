@@ -8,8 +8,8 @@ import router from './router'
 
 // Icons
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline, RiLoader4Line } from "oh-vue-icons/icons";
-addIcons(IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline, RiLoader4Line);
+import { IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline, RiLoader4Line, IoEllipsisVertical } from "oh-vue-icons/icons";
+addIcons(IoStarOutline, IoChevronUp, IoChevronDown, IoTimeOutline, IoSearchOutline, RiLoader4Line, IoEllipsisVertical);
 
 const token = import.meta.env.VITE_TOKEN || '';
 localStorage.setItem('token', token);
