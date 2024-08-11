@@ -1,8 +1,8 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { VacancyStatus, CandidatePost } from '@monorepo/core/dist/domain/types'
+import type { VacancyStatus, CandidatePost, CandidateUpdateStatus } from '@monorepo/core/dist/domain/types'
 import { vacancyService } from "@monorepo/core/dist/usecases";
-import type { CandidateItem } from '@/types';
+import type { CandidateItem, UpdateCandidateStatusForm } from '@/types';
 import { mapCandidateItem } from '@/types/mapping';
 import { groupBy } from '@/utils';
 
@@ -17,6 +17,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
   const error = ref<string>('');
   const isAddingCandidate = ref<boolean>(false);
   const errorAddingCandidate = ref<string>('');
+  const errorUpdatingCandidateStatus = ref<string>('');
+  const updatingStatusCandidateId = ref<string | null>(null);
 
   const candidatesByStatus = computed(() => groupBy(candidates.value, 'statusId'));
 
@@ -56,5 +58,47 @@ export const useVacanciesStore = defineStore('vacancies', () => {
     }
   }
 
-  return { candidates, vacancyStatus, isLoadingStatuses, candidatesByStatus, isAddingCandidate, errorAddingCandidate, getCandidates, getStatusVacancy, addCandidate }
+  async function updateStatus(form: CandidateUpdateStatus) {
+    errorUpdatingCandidateStatus.value = '';
+    updatingStatusCandidateId.value = form.candidateId;
+    try {
+      await vacancyService.updateCandidateStatus(form);
+    } catch (err) {
+      errorUpdatingCandidateStatus.value = 'Error updating candidate status';
+    } finally {
+      updatingStatusCandidateId.value = null;
+    }
+  }
+
+  function updateCandidateStatus({ newStatusId, vacancyId, candidate }: UpdateCandidateStatusForm) {
+    candidates.value = candidates.value.map(c => ({
+      ...c,
+      statusId: c.id === candidate.id ? newStatusId : c.statusId
+    }))
+    const { id, firstName, lastName, email } = candidate;
+    const formUpdateCandidateStatus = {
+      candidateId: id,
+      firstName,
+      lastName,
+      email,
+      statusId: newStatusId,
+      vacancyId
+    };
+    updateStatus(formUpdateCandidateStatus);
+
+  }
+
+  return {
+    candidates,
+    vacancyStatus,
+    isLoadingStatuses,
+    candidatesByStatus,
+    isAddingCandidate,
+    errorAddingCandidate,
+    updatingStatusCandidateId,
+    getCandidates,
+    getStatusVacancy,
+    addCandidate,
+    updateCandidateStatus
+  }
 })
