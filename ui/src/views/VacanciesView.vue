@@ -3,7 +3,12 @@
         <Header title="Reclutamiento" :username="user.username" :profilePicture="user.profile" />
         <Tabs>
             <Tab title="Vacantes">
-                <VacanciesTab :candidates="candidatesByStatus" :isLoadingStatuses="isLoadingStatuses" :vacancyStatus="vacancyStatus" />
+                <VacanciesTab
+                    :candidates="candidatesByStatus"
+                    :isLoadingStatuses="isLoadingStatuses"
+                    :vacancyStatus="vacancyStatus"
+                    @updateCandidateStatus=updateCandidateStatus
+                />
             </Tab>
             <Tab title="Candidatos">Candidatos Tab.</Tab>
         </Tabs>
@@ -18,6 +23,7 @@ import Header from '@/components/UI/Header.vue';
 import Tab from '@/components/UI/Tabs/Tab.vue';
 import Tabs from '@/components/UI/Tabs/Tabs.vue';
 import VacanciesTab from '@/components/Vacancies/VacanciesTab.vue';
+import type { CandidateItem } from '@/types';
 
 const route = useRoute();
 const vacancyId = route.params.id as string;
@@ -36,5 +42,9 @@ const { candidatesByStatus, isLoadingStatuses, vacancyStatus } = storeToRefs(sto
 store.getCandidates(vacancyId);
 store.getStatusVacancy(vacancyId);
 
+function updateCandidateStatus(event: { newStatusId: string, candidate: CandidateItem }) {
+    const {newStatusId, candidate } = event;
+    store.updateCandidateStatus({ newStatusId, vacancyId, candidate });
+}
 </script>
 <style></style>
