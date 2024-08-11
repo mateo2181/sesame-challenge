@@ -13,6 +13,7 @@
                     <Input name="lastName" v-model="lastName" label="Apellido *" placeholder="Apellido" />
                     <Input name="email" v-model="email" label="Correo Electrónico" placeholder="Correo Electrónico" />
                     <Input name="phone" v-model="phone" label="Número de Teléfono" placeholder="Número de Teléfono" />
+                    <InputSelect :options="vacancyStatusOptions" v-model="statusId" label="Estado del candidato en la vacante *" placeholder="Elige el estado del candidato" />
                     <div class="text-base text-red-600" v-if="error"> {{ error }} </div>
                 </div>
             </template>
@@ -33,11 +34,13 @@
     </form>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useVacanciesStore } from '@/stores/vacancies';
 import Input from '@/components/UI/Input/Input.vue';
+import InputSelect from '@/components/UI/InputSelect/InputSelect.vue';
 import Modal from '@/components/UI/Modal/Modal.vue';
+import type { VacancyStatus } from '@monorepo/core/dist/domain/types';
 
 const store = useVacanciesStore();
 
@@ -50,21 +53,27 @@ const props = defineProps({
         type: String,
         required: true
     },
-    statusId: {
-        type: String,
-        default: ''
-    }
+    vacancyStatus: {
+        type: Array<VacancyStatus>,
+        default: []
+    },
 });
 
 const firstName = ref('')
 const lastName = ref('')
 const email = ref('')
 const phone = ref('')
+const statusId = ref('')
 const error = ref('')
+
+const vacancyStatusOptions = computed(() => props.vacancyStatus.map((item: VacancyStatus) => ({
+    value: item.id,
+    label: item.name
+})));
 
 async function validateForm() {
     error.value = '';
-    if (!firstName.value || !lastName.value) {
+    if (!firstName.value || !lastName.value || !statusId.value) {
         error.value = 'Por favor complete los campos requeridos.';
         return;
     }
@@ -73,7 +82,7 @@ async function validateForm() {
         lastName: lastName.value,
         email: email.value,
         phone: phone.value,
-        statusId: props.statusId,
+        statusId: statusId.value,
         vacancyId: props.vacancyId
     });
 

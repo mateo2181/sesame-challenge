@@ -3,7 +3,7 @@ The challenge was solved using hexagonal architecture to encapsulate all the bus
 
 ## Assumptions
 - Since the Authentication was not implemented, the token was added as an environment variable and stored in the local storage to be used on the Axios Client (``` packages/core/usecases/adapters/clientApi.ts```).
-- When a new candidate is added, we use the ```vacancyId``` provided on the challenge description and we get the first vacancy status (```statusId```) assuming that all the candidates start the recruitment process from the beginning.
+- When a new candidate is added, we use the ```vacancyId``` provided on the challenge description.
 - ```creatorEmployee``` was hardcoded on the candidates array for challenge purposes since the API is returning always ```null``` and I want to show that data on the Candidate cards.
 - Route ```vacancies/24899ebc-e121-46e5-95dd-3e6b1cd613ad``` was hardcoded to use only that vacancy as part of the challenge.
 
