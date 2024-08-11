@@ -12,7 +12,6 @@ The challenge was solved using hexagonal architecture to encapsulate all the bus
 
 - `packages/core/domain`: business logic where we have ports (interfaces) and services.
 - `packages/core/usecases`: We create the adapters that allow the application to access external services such as databases, APIs, etc. In our case, we will consume the API https://api-test.sesametime.com.
-- `tests`: repository mocks and testing of the client service using Jest. 
 - `ui`: contains the presentation layer. Technical details:
     - Implemented with Vue 3.
     - Using Pinia as state management.
