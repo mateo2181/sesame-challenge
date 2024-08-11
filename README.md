@@ -41,12 +41,12 @@ npm run dev
 
 
 ## 🧪 How to run the Tests
+### Move to the packages/core folder
 - Run tests  
 ```console
 npm run test
 ```
-### Vue project (move to ui folder)
-- Run unit tests
+### Vue project (move to the ui folder)
 ```console
 npm run test:unit
 ```
