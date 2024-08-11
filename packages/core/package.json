@@ -5,7 +5,8 @@
   "types": "dist/index",
   "scripts": {
     "test": "test",
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "build:watch": "tsc --build --watch"
   },
   "author": "",
   "license": "ISC",

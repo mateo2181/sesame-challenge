@@ -1,0 +1,23 @@
+services:
+  # core:
+  #   build: .
+  #   volumes:
+  #     - ./:/code
+  #   command: npm run build:watch
+
+  # web:
+  #   build: ./ui
+  #   volumes:
+  #     - ./ui:/code
+  #   command: npm run dev
+  #   depends_on:
+  #     - core
+  #   ports:
+  #     - "5173:5173"
+    core:
+      build: .
+      volumes:
+        - ./:/code
+      command: ["sh", "/code/entrypoint.sh"]
+      ports:
+        - "5173:5173"
