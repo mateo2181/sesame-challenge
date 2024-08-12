@@ -17,6 +17,7 @@ The challenge was solved using hexagonal architecture to encapsulate all the bus
     - Using Pinia as state management.
     - TailwindCSS and custom components for styling.
     - Unit tests with Vitest.
+    - Integration tests with Cypress.
 
 
 ## 🚀 How to run the App
@@ -49,6 +50,11 @@ npm run test
 ```console
 npm run test:unit
 ```
+- Integration tests (API calls were intercepted using fixtures to mock the responses.)
+```console
+npm run test:e2e  // Headless mode
+npm run test:e2e:dev
+```
 
 
 ## 💪 Possible improvements
@@ -60,7 +66,6 @@ npm run test:unit
 - Add a Custom Button component.
 - Add translations using i18n library (https://vue-i18n.intlify.dev).
 - Add more unit tests.
-- Add integration tests with Cypress.
 
 
 ## Author

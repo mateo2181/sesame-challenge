@@ -1,0 +1,55 @@
+{
+    "data": [
+        {
+            "id": "23f8e8bb-2f80-4d83-8606-771547bff094",
+            "name": "New",
+            "order": 1,
+            "companyId": "7ae449bc-620c-4851-9d56-d25ff4094e34",
+            "createdAt": "2024-08-02T10:25:23+00:00",
+            "updatedAt": "2024-08-02T10:25:23+00:00",
+            "vacancyId": "24899ebc-e121-46e5-95dd-3e6b1cd613ad"
+        },
+        {
+            "id": "aebf6dd4-9177-4d58-9b64-e37589094cae",
+            "name": "Accepted",
+            "order": 2,
+            "companyId": "7ae449bc-620c-4851-9d56-d25ff4094e34",
+            "createdAt": "2024-08-02T10:25:23+00:00",
+            "updatedAt": "2024-08-02T10:25:23+00:00",
+            "vacancyId": "24899ebc-e121-46e5-95dd-3e6b1cd613ad"
+        },
+        {
+            "id": "ff51c247-6e6c-4fd6-a409-c3ae8c6acbd4",
+            "name": "Interview",
+            "order": 3,
+            "companyId": "7ae449bc-620c-4851-9d56-d25ff4094e34",
+            "createdAt": "2024-08-02T10:25:23+00:00",
+            "updatedAt": "2024-08-02T10:25:23+00:00",
+            "vacancyId": "24899ebc-e121-46e5-95dd-3e6b1cd613ad"
+        },
+        {
+            "id": "8c4d381a-f551-42d0-9c05-c6cdbbb1710c",
+            "name": "Selected",
+            "order": 4,
+            "companyId": "7ae449bc-620c-4851-9d56-d25ff4094e34",
+            "createdAt": "2024-08-02T10:25:23+00:00",
+            "updatedAt": "2024-08-02T10:25:23+00:00",
+            "vacancyId": "24899ebc-e121-46e5-95dd-3e6b1cd613ad"
+        },
+        {
+            "id": "0d35fd11-92c7-4cc9-bacb-adee3dbc5f41",
+            "name": "Discarded",
+            "order": 5,
+            "companyId": "7ae449bc-620c-4851-9d56-d25ff4094e34",
+            "createdAt": "2024-08-02T10:25:23+00:00",
+            "updatedAt": "2024-08-02T10:25:23+00:00",
+            "vacancyId": "24899ebc-e121-46e5-95dd-3e6b1cd613ad"
+        }
+    ],
+    "meta": {
+        "currentPage": 1,
+        "lastPage": 1,
+        "total": 5,
+        "perPage": 20
+    }
+}
