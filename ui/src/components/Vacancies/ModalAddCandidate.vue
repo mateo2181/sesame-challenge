@@ -13,8 +13,8 @@
                     <Input name="lastName" v-model="lastName" label="Apellido *" placeholder="Apellido" />
                     <Input name="email" v-model="email" label="Correo Electrónico" placeholder="Correo Electrónico" />
                     <Input name="phone" v-model="phone" label="Número de Teléfono" placeholder="Número de Teléfono" />
-                    <InputSelect :options="vacancyStatusOptions" v-model="statusId" label="Estado del candidato en la vacante *" placeholder="Elige el estado del candidato" />
-                    <div class="text-base text-red-600" v-if="error"> {{ error }} </div>
+                    <InputSelect name="statusId" :options="vacancyStatusOptions" v-model="statusId" label="Estado del candidato en la vacante *" placeholder="Elige el estado del candidato" />
+                    <div class="text-base text-red-600" data-test="add-candidate-modal-error" v-if="error"> {{ error }} </div>
                 </div>
             </template>
             <template #footer>

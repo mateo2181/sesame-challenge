@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-3 p-4 border border-slate-200 rounded-xl">
+    <div class="flex flex-col gap-3 p-4 border border-slate-200 rounded-xl" data-test="board-column-card">
         <div class="flex items-center justify-between relative">
             <div class="flex-grow text-base font-semibold leading-5 text-slate-800">{{ fullName }}</div>
             <button @click="showMenuOptions = !showMenuOptions" type="button">
